@@ -17,6 +17,8 @@ function Rec2 (x, y, w, h) {
   var size = this.size = new Vec2(w, h)
   var bound = this.bound = new Vec2(x + w)
   size.change(function (x, y) {
+    if(x < 0 || y < 0)
+      throw new Error('size must be positive')
     bound.set(self.x + size.x, self.y + size.y)
   })
   bound.change(function (x, y) {
@@ -27,7 +29,7 @@ function Rec2 (x, y, w, h) {
 
 var R = Rec2.prototype
 
-R.contained = function (point) {
+R.contains = function (point) {
   return (
     this.x <= point.x && point.x <= this.bound.x 
   &&
@@ -35,11 +37,15 @@ R.contained = function (point) {
   )
 }
 
-R.collide = function (box) {
+R.collides = function (box) {
   return (
       (this.x <= box.x       && box.x       <= this.bound.x
     || this.x <= box.bound.x && box.bound.x <= this.bound.x)
     &&(this.y <= box.y       &&       box.y <= this.bound.y
     || this.y <= box.bound.y && box.bound.y <= this.bound.y)
   )
+}
+
+R.area = function () {
+  return this.size.x * this.size.y
 }
