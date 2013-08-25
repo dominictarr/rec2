@@ -15,13 +15,14 @@ var r = new Rec2(0, 0, 100, 100) //x, y, width, height
 //.bounds is the absolute position of the other corner.
 ```
 
-
 ## API
 
 ### new Rec2(x, y, w, h)
 
 create a `Rec2` instance with given dimensions.
 all dimensions default to 0.
+
+If size must >= 0 or an error will be thrown.
 
 ### Rec2#contains(point)
 
