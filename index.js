@@ -12,7 +12,6 @@ function Rec2 (x, y, w, h) {
   y = y || 0
   w = w || 0
   h = h || 0
-  console.log(x, y, w, h)
   this.set(0, 0)
   var self = this
   var size = this.size = new Vec2(w, h)
