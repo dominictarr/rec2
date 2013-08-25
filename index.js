@@ -31,7 +31,9 @@ function Rec2 (x, y, w, h) {
     size.set(bound.x - self.x, bound.y - self.y)
     UPDATE = true
   })
-
+  this.change(function (x, y) {
+    bound.set(self.x + self.size.x, self.y + self.size.y)
+  })
 }
 
 var R = Rec2.prototype
