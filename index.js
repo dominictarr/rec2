@@ -16,13 +16,20 @@ function Rec2 (x, y, w, h) {
   var self = this
   var size = this.size = new Vec2(w, h)
   var bound = this.bound = new Vec2(x + w)
+  var UPDATE = true
   size.change(function (x, y) {
+    if(!UPDATE) return
     if(x < 0 || y < 0)
       throw new Error('size must be positive')
+    UPDATE = false
     bound.set(self.x + size.x, self.y + size.y)
+    UPDATE = true
   })
   bound.change(function (x, y) {
+    if(!UPDATE) return
+    UPDATE = false
     size.set(bound.x - self.x, bound.y - self.y)
+    UPDATE = true
   })
 
 }
