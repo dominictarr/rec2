@@ -12,10 +12,10 @@ function Rec2 (x, y, w, h) {
   y = y || 0
   w = w || 0
   h = h || 0
-  this.set(0, 0)
+  this.set(x, y)
   var self = this
   var size = this.size = new Vec2(w, h)
-  var bound = this.bound = new Vec2(x + w)
+  var bound = this.bound = new Vec2(x + w, y + h)
   var UPDATE = true
   size.change(function (x, y) {
     if(!UPDATE) return
